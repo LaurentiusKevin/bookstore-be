@@ -6,11 +6,18 @@ export const bookRouter = Router();
 
 bookRouter.get("/", async (req: Request, res: Response) => {
   try {
-    const queryParams: { page?: string; pageSize?: string } = req.query;
+    const queryParams: {
+      page?: string;
+      pageSize?: string;
+      tags?: string[];
+      writers?: string[];
+    } = req.query;
 
     const data = await BookController.getBook(
       queryParams.page,
-      queryParams.pageSize
+      queryParams.pageSize,
+      queryParams.tags,
+      queryParams.writers
     );
 
     res.status(200).json({ message: "success", data: data });

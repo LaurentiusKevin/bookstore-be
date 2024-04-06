@@ -611,7 +611,7 @@
 					},
 					{
 						"in": "query",
-						"name": "writer",
+						"name": "writers",
 						"required": false,
 						"schema": {
 							"type": "array",

@@ -10,6 +10,13 @@ export default class BookService {
     tags?: string[],
     writers?: string[]
   ) {
+    if (tags && typeof tags === "string") {
+      tags = [tags];
+    }
+
+    if (writers && typeof writers === "string") {
+      writers = [writers];
+    }
     const book = await BookRepository.getBook(page, pageSize, tags, writers);
 
     return book;

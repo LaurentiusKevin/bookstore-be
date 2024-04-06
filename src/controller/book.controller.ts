@@ -24,7 +24,7 @@ export default class BookController extends Controller {
     @Query("page") page?: string,
     @Query("pageSize") pageSize?: string,
     @Query("tags") tags?: string[],
-    @Query("writer") writers?: string[]
+    @Query("writers") writers?: string[]
   ): Promise<GetBookResponse> {
     const book = await BookService.getBook(
       parseInt(page ?? "1"),

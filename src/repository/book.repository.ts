@@ -18,6 +18,7 @@ export default class BookRepository {
       include: [
         {
           model: TagEntity,
+          // required: true,
           where:
             tags !== undefined
               ? {
@@ -27,6 +28,7 @@ export default class BookRepository {
         },
         {
           model: WriterEntity,
+          // required: true,
           where:
             writers !== undefined
               ? {
