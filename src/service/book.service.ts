@@ -4,8 +4,13 @@ import TagRepository from "../repository/tag.repository";
 import WriterRepository from "../repository/writer.repository";
 
 export default class BookService {
-  static async getBook(page: number = 1, pageSize: number = 10) {
-    const book = await BookRepository.getBook(page, pageSize);
+  static async getBook(
+    page: number = 1,
+    pageSize: number = 10,
+    tags?: string[],
+    writers?: string[]
+  ) {
+    const book = await BookRepository.getBook(page, pageSize, tags, writers);
 
     return book;
   }

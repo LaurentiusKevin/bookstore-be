@@ -1,15 +1,40 @@
+import { Op } from "sequelize";
 import BookEntity from "../entity/book.entity";
 import TagEntity from "../entity/tag.entity";
 import WriterEntity from "../entity/writer.entity";
 import { BookRepoParams } from "../interface/book.interface";
 
 export default class BookRepository {
-  static async getBook(page: number = 1, pageSize: number = 10) {
+  static async getBook(
+    page: number = 1,
+    pageSize: number = 10,
+    tags?: string[],
+    writers?: string[]
+  ) {
     const { count, rows } = await BookEntity.findAndCountAll({
       order: [["createdAt", "desc"]],
       limit: pageSize,
       offset: (page - 1) * pageSize,
-      include: [TagEntity, WriterEntity],
+      include: [
+        {
+          model: TagEntity,
+          where:
+            tags !== undefined
+              ? {
+                  title: { [Op.in]: tags },
+                }
+              : {},
+        },
+        {
+          model: WriterEntity,
+          where:
+            writers !== undefined
+              ? {
+                  name: { [Op.in]: writers },
+                }
+              : {},
+        },
+      ],
       distinct: true,
     });
 

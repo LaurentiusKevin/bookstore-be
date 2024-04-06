@@ -22,11 +22,15 @@ export default class BookController extends Controller {
   @Get("/")
   static async getBook(
     @Query("page") page?: string,
-    @Query("pageSize") pageSize?: string
+    @Query("pageSize") pageSize?: string,
+    @Query("tags") tags?: string[],
+    @Query("writer") writers?: string[]
   ): Promise<GetBookResponse> {
     const book = await BookService.getBook(
       parseInt(page ?? "1"),
-      parseInt(pageSize ?? "10")
+      parseInt(pageSize ?? "10"),
+      tags,
+      writers
     );
 
     return book;
