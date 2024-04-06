@@ -1,0 +1,25 @@
+{
+  "entryFile": "./index.ts",
+  "noImplicitAdditionalProperties": "throw-on-extras",
+  "controllerPathGlobs": ["src/**/*controller.ts"],
+  "spec": {
+    "basePath": "/api/v1",
+    "outputDirectory": "./src",
+    "specVersion": 3,
+    "securityDefinitions": {
+      "token": {
+        "type": "apiKey",
+        "name": "authorization",
+        "in": "header"
+      }
+    },
+    "spec": {
+      "servers": [
+        {
+          "url": "http://localhost:3100/api/v1",
+          "description": "Local development"
+        }
+      ]
+    }
+  }
+}

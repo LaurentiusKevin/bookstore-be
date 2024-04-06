@@ -1,0 +1,625 @@
+{
+	"openapi": "3.0.0",
+	"components": {
+		"examples": {},
+		"headers": {},
+		"parameters": {},
+		"requestBodies": {},
+		"responses": {},
+		"schemas": {
+			"WriterAttributes": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"name": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"updatedAt": {
+						"type": "string",
+						"format": "date-time"
+					}
+				},
+				"required": [
+					"name"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"GetWriterResponse": {
+				"properties": {
+					"message": {
+						"type": "string"
+					},
+					"data": {
+						"items": {
+							"$ref": "#/components/schemas/WriterAttributes"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"message",
+					"data"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"TagAttributes": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"title": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"updatedAt": {
+						"type": "string",
+						"format": "date-time"
+					}
+				},
+				"required": [
+					"id",
+					"title"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"GetTagResponse": {
+				"properties": {
+					"message": {
+						"type": "string"
+					},
+					"data": {
+						"items": {
+							"$ref": "#/components/schemas/TagAttributes"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"message",
+					"data"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"BookAttributes": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"title": {
+						"type": "string"
+					},
+					"writer_id": {
+						"type": "number",
+						"format": "double"
+					},
+					"cover_image": {
+						"type": "string"
+					},
+					"point": {
+						"type": "number",
+						"format": "double"
+					},
+					"createdBy": {
+						"type": "number",
+						"format": "double"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"updatedAt": {
+						"type": "string",
+						"format": "date-time"
+					}
+				},
+				"required": [
+					"id",
+					"title",
+					"writer_id",
+					"cover_image",
+					"point",
+					"createdBy"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"GetBookResponse": {
+				"properties": {
+					"totalPage": {
+						"type": "number",
+						"format": "double"
+					},
+					"currentPage": {
+						"type": "number",
+						"format": "double"
+					},
+					"pageSize": {
+						"type": "number",
+						"format": "double"
+					},
+					"totalRecord": {
+						"type": "number",
+						"format": "double"
+					},
+					"books": {
+						"items": {
+							"$ref": "#/components/schemas/BookAttributes"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"totalPage",
+					"currentPage",
+					"pageSize",
+					"totalRecord",
+					"books"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"TokenUserParams": {
+				"properties": {
+					"username": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"iat": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"exp": {
+						"type": "string",
+						"format": "date-time"
+					}
+				},
+				"required": [
+					"username",
+					"name",
+					"iat",
+					"exp"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"BookParams": {
+				"properties": {
+					"title": {
+						"type": "string"
+					},
+					"cover_image": {
+						"type": "string"
+					},
+					"point": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"title",
+					"cover_image",
+					"point"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"WriterParams": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"name": {
+						"type": "string"
+					}
+				},
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CreateBookParams": {
+				"properties": {
+					"user": {
+						"$ref": "#/components/schemas/TokenUserParams"
+					},
+					"book": {
+						"$ref": "#/components/schemas/BookParams"
+					},
+					"tags": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					},
+					"writer": {
+						"$ref": "#/components/schemas/WriterParams"
+					}
+				},
+				"required": [
+					"user",
+					"book",
+					"tags",
+					"writer"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"RegisterParams": {
+				"properties": {
+					"username": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"username",
+					"password",
+					"name"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"LoginParams": {
+				"properties": {
+					"username": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"username",
+					"password"
+				],
+				"type": "object",
+				"additionalProperties": false
+			}
+		},
+		"securitySchemes": {
+			"token": {
+				"type": "apiKey",
+				"name": "authorization",
+				"in": "header"
+			}
+		}
+	},
+	"info": {
+		"title": "hyperhire-bookstore-be",
+		"version": "0.0.1",
+		"description": "For Hyperhire Test",
+		"license": {
+			"name": "ISC"
+		},
+		"contact": {
+			"name": "Laurentius"
+		}
+	},
+	"paths": {
+		"/writers": {
+			"get": {
+				"operationId": "GetWriter",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/GetWriterResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Writer"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/tags": {
+			"get": {
+				"operationId": "GetTag",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/GetTagResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Tags"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/book": {
+			"get": {
+				"operationId": "GetBook",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/GetBookResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Book"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "page",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "pageSize",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			},
+			"post": {
+				"operationId": "Create",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/BookAttributes"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Book"
+				],
+				"security": [
+					{
+						"token": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CreateBookParams"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/book/{id}": {
+			"get": {
+				"operationId": "GetById",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/BookAttributes"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Book"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/auth/register": {
+			"post": {
+				"operationId": "Register",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"updatedAt": {
+											"type": "string",
+											"format": "date-time"
+										},
+										"createdAt": {
+											"type": "string",
+											"format": "date-time"
+										},
+										"username": {
+											"type": "string"
+										},
+										"name": {
+											"type": "string"
+										},
+										"id": {
+											"type": "number",
+											"format": "double"
+										}
+									},
+									"required": [
+										"updatedAt",
+										"createdAt",
+										"username",
+										"name",
+										"id"
+									],
+									"type": "object"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Auth"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/RegisterParams"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/auth/login": {
+			"post": {
+				"operationId": "Login",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"anyOf": [
+										{
+											"properties": {
+												"user": {},
+												"error": {
+													"type": "string",
+													"enum": [
+														"User not found!"
+													],
+													"nullable": false
+												}
+											},
+											"required": [
+												"error"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"user": {},
+												"error": {
+													"type": "string",
+													"enum": [
+														"Username or password not found!"
+													],
+													"nullable": false
+												}
+											},
+											"required": [
+												"error"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"user": {
+													"properties": {
+														"name": {
+															"type": "string"
+														},
+														"username": {
+															"type": "string"
+														}
+													},
+													"required": [
+														"name",
+														"username"
+													],
+													"type": "object"
+												},
+												"error": {}
+											},
+											"required": [
+												"user",
+												"error"
+											],
+											"type": "object"
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Auth"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/LoginParams"
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"servers": [
+		{
+			"url": "http://localhost:3100/api/v1",
+			"description": "Local development"
+		}
+	]
+}
