@@ -18,6 +18,10 @@
         {
           "url": "http://localhost:3100/api/v1",
           "description": "Local development"
+        },
+        {
+          "url": "https://bookstore-be-production-cf40.up.railway.app/",
+          "description": "Production"
         }
       ]
     }
