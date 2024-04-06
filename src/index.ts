@@ -10,7 +10,7 @@ dotenv.config();
 const app: Application = express();
 const port = process.env.PORT || 3100;
 
-app.use(cors({ origin: false }));
+app.use(cors({ origin: "*" }));
 app.use(express.json());
 app.use(express.static("public"));
 app.use("/", routes);
