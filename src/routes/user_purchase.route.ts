@@ -5,7 +5,7 @@ import { verifyToken } from "../middleware";
 
 export const userPurchaseRouter = Router();
 
-userPurchaseRouter.get(
+userPurchaseRouter.post(
   "/",
   verifyToken,
   async (req: Request, res: Response) => {
