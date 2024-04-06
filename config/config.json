@@ -1,23 +1,16 @@
 {
   "development": {
-    "username": "postgres",
-    "password": "postgres",
-    "database": "hyperhire_bookstore",
-    "host": "127.0.0.1",
-    "dialect": "postgresql"
-  },
-  "test": {
-    "username": "postgres",
-    "password": "postgres",
-    "database": "hyperhire_bookstore",
-    "host": "127.0.0.1",
+    "username": "qshgysxp",
+    "password": "mBaqCxQwyYiu1hCTlocXs80yNLez7dVH",
+    "database": "qshgysxp",
+    "host": "rosie.db.elephantsql.com",
     "dialect": "postgresql"
   },
   "production": {
-    "username": "postgres",
-    "password": "postgres",
-    "database": "hyperhire_bookstore",
-    "host": "127.0.0.1",
+    "username": "qshgysxp",
+    "password": "mBaqCxQwyYiu1hCTlocXs80yNLez7dVH",
+    "database": "qshgysxp",
+    "host": "rosie.db.elephantsql.com",
     "dialect": "postgresql"
   }
 }
