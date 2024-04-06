@@ -30,20 +30,24 @@ authRouter.post("/login", async (req: Request, res: Response) => {
 
     const token = sign(
       {
+        id: data.user?.id,
         username: data.user?.username,
         name: data.user?.name,
       },
       AUTH.JWT_SECRET,
       { expiresIn: "1d" }
     );
+
     const refreshToken = sign(
       {
+        id: data.user?.id,
         username: data.user?.username,
         name: data.user?.name,
       },
       AUTH.JWT_SECRET,
       { expiresIn: "5d" }
     );
+
     res.status(200).json({
       message: "success",
       data: data.user,

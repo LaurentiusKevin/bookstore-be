@@ -1,5 +1,6 @@
 import { DataTypes, Model, Optional } from "sequelize";
 import sequelize from "./sequelize";
+import UserPointsEntity from "./user_point.entity";
 
 type UserAttributes = {
   id?: number;
@@ -45,5 +46,7 @@ UserEntity.init(
     timestamps: true,
   }
 );
+
+UserEntity.hasMany(UserPointsEntity, { foreignKey: "user_id" });
 
 export default UserEntity;

@@ -10,6 +10,7 @@ export interface LoginParams {
 }
 
 export interface TokenUserParams {
+  id: number;
   username: string;
   name: string;
   iat: Date;

@@ -3,6 +3,7 @@ import { LoginParams, RegisterParams } from "../interface/auth.interface";
 import AuthRepository from "../repository/auth.repository";
 import * as crypto from "crypto";
 import { Error } from "../constants/error.constant";
+import UserPointRepository from "../repository/user_point.repository";
 
 export default class AuthService {
   static scryptAsync = promisify(crypto.scrypt);
@@ -31,11 +32,21 @@ export default class AuthService {
   }
 
   static async register(params: RegisterParams) {
-    return await AuthRepository.register({
+    const user = await AuthRepository.register({
       username: params.username,
       password: await this.hashPassword(params.password),
       name: params.name,
     });
+
+    if (user.id) {
+      await UserPointRepository.addPoint({
+        user_id: user.id,
+        point: 100,
+        notes: "New member",
+      });
+    }
+
+    return user;
   }
 
   static async login(params: LoginParams) {
@@ -60,6 +71,7 @@ export default class AuthService {
     return {
       error: undefined,
       user: {
+        id: user.id,
         username: user.username,
         name: user.name,
       },
