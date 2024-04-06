@@ -17,6 +17,10 @@ export default class BookService {
     if (writers && typeof writers === "string") {
       writers = [writers];
     }
+
+    tags?.map((item) => decodeURI(item));
+    writers?.map((item) => decodeURI(item));
+
     const book = await BookRepository.getBook(page, pageSize, tags, writers);
 
     return book;
