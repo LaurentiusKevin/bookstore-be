@@ -38,7 +38,7 @@ UserPurchaseEntity.init(
   },
   {
     sequelize,
-    modelName: "user_purchase",
+    modelName: "user_purchases",
     timestamps: true,
   }
 );
